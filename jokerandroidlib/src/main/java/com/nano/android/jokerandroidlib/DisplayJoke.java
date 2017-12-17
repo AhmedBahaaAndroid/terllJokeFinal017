@@ -24,4 +24,11 @@ public class DisplayJoke extends AppCompatActivity {
             textview.setText("couldn't find the joke!");
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+      this.finish();
+
+    }
 }

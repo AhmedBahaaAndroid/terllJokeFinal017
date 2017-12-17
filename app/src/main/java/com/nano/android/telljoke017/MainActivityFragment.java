@@ -68,7 +68,25 @@ public class MainActivityFragment extends Fragment {
 //        // Put the string in the envelope
 //        intent.putExtra("JOKE", joker.getJoke());
 //        startActivity(intent);
-       new EndpointAsyncTask().execute(this);
+
+        new EndpointAsyncTask(
+                new EndpointAsyncTask.AsyncResponse(){
+
+                    @Override
+                    public void processFinish(String output){
+                        //Here you will receive the result fired from async class
+                        //of onPostExecute(result) method.
+                        Intent intent = new Intent(getActivity(), DisplayJoke.class);
+                        intent.putExtra("JOKE", output);
+                        Toast.makeText(getActivity(), output, Toast.LENGTH_LONG).show();
+                        getActivity().startActivity(intent);
+                        progressBar.setVisibility(View.GONE);
+                    }
+                }
+        ).execute(this);
+
+
+       //new EndpointAsyncTask().execute(this);
     }
 
     public void DisplayJokeActivity(){

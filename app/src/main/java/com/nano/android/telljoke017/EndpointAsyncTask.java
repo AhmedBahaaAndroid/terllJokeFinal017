@@ -2,7 +2,6 @@ package com.nano.android.telljoke017;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.example.ahmed.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -19,6 +18,16 @@ public class EndpointAsyncTask extends AsyncTask<MainActivityFragment, Void, Str
     private static MyApi myApiService = null;
     private Context context;
     private MainActivityFragment mainActivityFragment;
+    public AsyncResponse delegate = null;
+
+    public interface AsyncResponse {
+        void processFinish(String output);
+    }
+
+    public EndpointAsyncTask(AsyncResponse delegate){
+        this.delegate = delegate;
+    }
+
     @Override
     protected String doInBackground(MainActivityFragment... params) {
         if(myApiService == null) {  // Only do this once
@@ -63,8 +72,12 @@ public class EndpointAsyncTask extends AsyncTask<MainActivityFragment, Void, Str
         intent.putExtra(DisplayJokeActivity.JOKE_KEY,result);
         context.startActivity(intent);
 */
-        mainActivityFragment.loadedJoke = result;
-        mainActivityFragment.DisplayJokeActivity();
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+//            mainActivityFragment.loadedJoke = result;
+//            mainActivityFragment.DisplayJokeActivity();
+
+             delegate.processFinish(result);
+
+
+
     }
 }
