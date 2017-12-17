@@ -1,15 +1,10 @@
-package com.udacity.gradle.builditbigger;
+package com.nano.android.telljoke017.paid;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Pair;
-import android.view.View;
-import android.widget.ProgressBar;
+import android.widget.Toast;
 
-import com.example.matteo.myandroidlibrary.JokeDisplayActivity;
-import com.example.matteo.myapplication.backend.jokeApi.JokeApi;
-import com.example.matteo.myapplication.backend.jokeApi.model.JokeBean;
+import com.example.ahmed.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 
@@ -21,9 +16,9 @@ import java.io.IOException;
  class EndpointAsyncTask extends AsyncTask<com.nano.android.telljoke017.paid.MainActivityFragment, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
-    private MainActivityFragment mainActivityFragment;
+    private com.nano.android.telljoke017.paid.MainActivityFragment mainActivityFragment;
     @Override
-    protected String doInBackground(MainActivityFragment... params) {
+    protected String doInBackground(com.nano.android.telljoke017.paid.MainActivityFragment... params) {
         if(myApiService == null) {  // Only do this once
 //         MyApi.Builder builder = new
 //                    MyApi.Builder(AndroidHttp.newCompatibleTransport(),

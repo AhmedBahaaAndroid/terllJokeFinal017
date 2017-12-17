@@ -1,22 +1,21 @@
-package com.nano.android.telljoke017.free;
+package com.nano.android.telljoke017.paid;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.nano.android.jokerandroidlib.DisplayJoke;
+import com.nano.android.telljoke017.R;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MainActivityFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MainActivityFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MainActivityFragment extends Fragment {
     ProgressBar progressBar = null;
     public String loadedJoke = null;
